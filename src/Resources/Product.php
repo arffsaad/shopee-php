@@ -164,6 +164,24 @@ class Product extends Resource
         ]);
     }
 
+    public function updateStock($item_id, $params = [])
+    {
+        $params['item_id'] = $item_id;
+
+        return $this->call('POST', 'product/update_stock', [
+            RequestOptions::JSON => $params,
+        ]);
+    }
+
+    public function updatePrice($item_id, $params = [])
+    {
+        $params['item_id'] = $item_id;
+
+        return $this->call('POST', 'product/update_price', [
+            RequestOptions::JSON => $params,
+        ]);
+    }
+
     public function deleteItem($item_id)
     {
         return $this->call('POST', 'product/delete_item', [
@@ -181,7 +199,7 @@ class Product extends Resource
             'model' => $model,
         ];
 
-        return $this->call('POST', 'product/init_tier_variations', [
+        return $this->call('POST', 'product/init_tier_variation', [
             RequestOptions::JSON => $params,
         ]);
     }
